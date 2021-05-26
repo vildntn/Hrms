@@ -36,8 +36,8 @@ public class CandidateManager implements CandidateService {
 	}
 
 	@Override
-	public DataResult<List<Candidate>> getByMail(String email) {
-		return new SuccessDataResult<List<Candidate>>(candidateDao.findByEmail(email));
+	public DataResult<Candidate> getByMail(String email) {
+		return new SuccessDataResult<Candidate>(candidateDao.findByEmail(email));
 	}
 
 	@Override

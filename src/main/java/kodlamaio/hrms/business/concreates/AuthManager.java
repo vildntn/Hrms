@@ -43,7 +43,7 @@ public class AuthManager implements AuthService{
 		if(!checkForNullOfUserInfo(candidate)) {
 	            return new ErrorResult("You must not leave any blank space.");
 		}
-		if(checkIfUserExist(candidate.getEmail())!=null) {
+		if(!checkIfUserExist(candidate.getEmail())) {
 			 return new ErrorResult("Registration failed cause this e-mail address is already in use!");
 		}
          if(checkIfNationalIdentityExist(candidate.getNationalIdentity())){
@@ -55,13 +55,13 @@ public class AuthManager implements AuthService{
          if(!checkIfPasswordTrue(candidate.getPassword(), rePassword)) {
   			return new  ErrorResult("Passwords do not match! Check again!");
   		}
-			candidateService.add(candidate);
+			//candidateService.add(candidate);
 			return new SuccessResult("Registration is successful!");
 	}
 
 	@Override
 	public Result registerByEmployer(Employer employer, String rePassword) {
-		if(checkIfEmployerExist(employer.getEmail())==null) {
+		if(!checkIfEmployerExist(employer.getEmail())) {
 			return new  ErrorResult("Registration failed cause this e-mail address is already in use!");
 		}if(!checkForNullOfEmployerInfo(employer)) {
 			return new  ErrorResult("You must not leave any blank space.");
@@ -75,24 +75,27 @@ public class AuthManager implements AuthService{
 		  if(!checkIfPasswordTrue(employer.getPassword(), rePassword)) {
 	  			return new  ErrorResult("Passwords do not match! Check again!");
 	  		}
-			employerService.add(employer);
+			//employerService.add(employer);
 			return new SuccessResult("Registration is successful!");
 	}
 
 	@Override
-	public Result checkIfUserExist(String email) {
-		if(candidateService.getByMail(email)!=null) {
-			return new ErrorResult("Registration failed cause this e-mail address is already in use!");
+	public boolean checkIfUserExist(String email) {
+		if(candidateService.getByMail(email).getData()!=null) {
+			return false;
 			
+		}else {
+		return true;
 		}
-		return new SuccessResult();
 	}
 	@Override
-	public Result checkIfEmployerExist(String email) {
-		if(employerService.getByEmail(email)==null) {
-			return new ErrorResult("Registration failed cause this e-mail address is already in use!");
+	public boolean checkIfEmployerExist(String email) {
+		if(employerService.getByEmail(email).getData()!=null) {
+              return false;
+			
+		}else {
+		return true;
 		}
-		return new SuccessResult();
 	}
 	
 	

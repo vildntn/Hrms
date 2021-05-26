@@ -37,8 +37,8 @@ public class EmployerManager implements EmployerService{
 	}
 
 	@Override
-	public DataResult<List<Employer>> getByEmail(String email) {
-		return new SuccessDataResult<List<Employer>>(employerDao.findByEmail(email));
+	public DataResult<Employer> getByEmail(String email) {
+		return new SuccessDataResult<Employer>(employerDao.findByEmail(email));
 		
 	}
 

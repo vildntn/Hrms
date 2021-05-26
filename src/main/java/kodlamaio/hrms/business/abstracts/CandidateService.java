@@ -11,6 +11,6 @@ public interface CandidateService {
 	
 	DataResult<List<Candidate>> getAll();
 	Result add(Candidate candidate);
-	DataResult<List<Candidate>> getByMail(String email);
+	DataResult<Candidate> getByMail(String email);
 	DataResult<List<Candidate>> getByNationalIdentity(String nationalIdentity);
 }

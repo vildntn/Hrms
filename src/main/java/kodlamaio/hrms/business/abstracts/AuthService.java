@@ -10,6 +10,6 @@ public interface AuthService {
 	
 	 Result registerByCandidate(Candidate candidate, String rePassword);
 	 Result registerByEmployer(Employer employer, String rePassword);
-	 Result checkIfUserExist(String email);
-	 Result checkIfEmployerExist(String email);
+	 boolean checkIfUserExist(String email);
+	 boolean checkIfEmployerExist(String email);
 }

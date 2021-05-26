@@ -33,8 +33,7 @@ public class AuthManager implements AuthService{
 		this.emailVerificationService=emailVerificationService;
 		this.mernisService=mernisService;
 	}
-    
-
+ 
     
 	@Override
 	public Result registerByCandidate(Candidate candidate, String rePassword) {

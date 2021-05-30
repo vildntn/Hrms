@@ -42,6 +42,13 @@ public class Employer extends User{
 	@OneToMany(mappedBy = "employer")
 	private List<JobPosting> jobPostings;
 	
+	
+//   Deneme1
+//	@OneToOne
+//	@MapsId
+//	@JoinColumn(name="id")
+//	
+//	private User user;
 	public Employer() {
 		
 	}

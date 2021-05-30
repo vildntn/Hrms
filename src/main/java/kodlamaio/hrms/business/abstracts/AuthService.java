@@ -11,5 +11,5 @@ public interface AuthService {
 	 Result registerByCandidate(Candidate candidate, String rePassword);
 	 Result registerByEmployer(Employer employer, String rePassword);
 	 boolean checkIfUserExist(String email);
-	 boolean checkIfEmployerExist(String email);
+	// boolean checkIfEmployerExist(String email);
 }

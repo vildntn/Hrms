@@ -61,21 +61,22 @@ public class AuthManager implements AuthService{
 
 	@Override
 	public Result registerByEmployer(Employer employer, String rePassword) {
-		if(!checkIfEmployerExist(employer.getEmail())) {
-			return new  ErrorResult("Registration failed cause this e-mail address is already in use!");
-		}if(!checkForNullOfEmployerInfo(employer)) {
+//		if(!checkIfEmployerExist(employer.getUser().getEmail())) {
+//			return new  ErrorResult("Registration failed cause this e-mail address is already in use!");
+//		}
+		if(!checkForNullOfEmployerInfo(employer)) {
 			return new  ErrorResult("You must not leave any blank space.");
-		}if(!checkIfEmailAndDomainSame(employer.getEmail(),employer.getWebAddress())) {
+		}if(!checkIfEmailAndDomainSame(employer.getUser().getEmail(),employer.getWebAddress())) {
 			return new  ErrorResult("Please enter a valid e-mail address!");
 		}
 		
-		if(!checkEmailVerification(employer.getEmail())) {
+		if(!checkEmailVerification(employer.getUser().getEmail())) {
 			return new  ErrorResult("Verification failed!");
 		}
-		  if(!checkIfPasswordTrue(employer.getPassword(), rePassword)) {
+		  if(!checkIfPasswordTrue(employer.getUser().getPassword(), rePassword)) {
 	  			return new  ErrorResult("Passwords do not match! Check again!");
 	  		}
-			//employerService.add(employer);
+			employerService.add(employer);
 			return new SuccessResult("Registration is successful!");
 	}
 
@@ -88,20 +89,21 @@ public class AuthManager implements AuthService{
 		return true;
 		}
 	}
-	@Override
-	public boolean checkIfEmployerExist(String email) {
-		if(employerService.getByEmail(email).getData()!=null) {
-              return false;
-			
-		}else {
-		return true;
-		}
-	}
+//	@Override
+//	public boolean checkIfEmployerExist(String email) {
+//		if(employerService.getByEmail(email).getData()!=null) {
+//              return false;
+//			
+//		}else {
+//		return true;
+//		}
+//	}
 	
 	
 	private boolean checkForNullOfUserInfo(Candidate candidate) {
-		if(!candidate.getFirstName().isEmpty()&& !candidate.getLastName().isEmpty()&&!candidate.getEmail().isEmpty()&&
-				!candidate.getNationalIdentity().isEmpty()&&!candidate.getPassword().isEmpty()&&candidate.getBirthYear()!=null) {
+		if(!candidate.getFirstName().isEmpty()&& !candidate.getLastName().isEmpty()&&!candidate.getEmail().isEmpty()
+				&&!candidate.getPassword().isEmpty()&&
+				!candidate.getNationalIdentity().isEmpty()&&candidate.getBirthYear()!=null) {
 			return true;
 		}else {
 			return false;
@@ -109,8 +111,8 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean checkForNullOfEmployerInfo(Employer employer) {
-		if(!employer.getCompanyName().isEmpty()&&!employer.getEmail().isEmpty()&&!employer.getWebAddress().isEmpty()&&
-				!employer.getPhoneNumber().isEmpty()&&!employer.getPassword().isEmpty()) {
+		if(!employer.getCompanyName().isEmpty()&&!employer.getUser().getEmail().isEmpty()&&!employer.getWebAddress().isEmpty()&&
+				!employer.getPhoneNumber().isEmpty()&&!employer.getUser().getPassword().isEmpty()) {
 			return true;
 		}
 		return false;

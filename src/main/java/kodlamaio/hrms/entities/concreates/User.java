@@ -1,20 +1,29 @@
 package kodlamaio.hrms.entities.concreates;
 
-import java.time.LocalDate;
 
+
+
+import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 @Data
 @Entity
 @Table(name="users")
+@AllArgsConstructor
 @Inheritance(strategy =InheritanceType.JOINED)
 public class User {
 	@Id
@@ -30,20 +39,21 @@ public class User {
 	
 	
 	@Column(name="created_date")
-	private LocalDate createdDate;
+	private Date createdDate;
 	
 	@Column(name="status")
 	private boolean status;
+	
+//	@OneToOne(mappedBy = "user", cascade=CascadeType.ALL)
+//	@PrimaryKeyJoinColumn
+//	private Employer employer;
+//	
+	
 	public User() {
 		
 	}
 
-	public User(int id, String email, String password) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-	}
+	
 	
 
 }

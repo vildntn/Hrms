@@ -1,16 +1,33 @@
 package kodlamaio.hrms.entities.concreates;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 @Data
 @Entity
 @Table(name="employers")
+@AllArgsConstructor
 @PrimaryKeyJoinColumn(name="id")
-public class Employer extends User{
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+public class Employer {
+	@Id
+	@Column(name="id")
+	private int id;
 
 	@Column(name="company_name")
 	private String companyName;
@@ -21,16 +38,21 @@ public class Employer extends User{
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+	
+	@OneToOne
+	@MapsId
+	@JoinColumn(name="id")
+	private User user;
+	
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobPosting> jobPostings;
+	
 	public Employer() {
 		
 	}
 	
-	public Employer(int id, String companyName, String webAddress, String phoneNumber) {
-		super();
-		this.companyName = companyName;
-		this.webAddress = webAddress;
-		this.phoneNumber = phoneNumber;
-	}
+
 	
 
 }

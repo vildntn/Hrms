@@ -1,25 +1,31 @@
 package kodlamaio.hrms.entities.concreates;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name="candidates")
-@PrimaryKeyJoinColumn(name="id")
-public class Candidate extends User{
-
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","user"})
+public class Candidate extends User {
+	
+	
 	@Column(name="first_name")
 	private String firstName;
 	
@@ -30,19 +36,10 @@ public class Candidate extends User{
 	private String nationalIdentity;
 	
 	@Column(name="birth_year")
-	private LocalDate birthYear;
+	private Date birthYear;
 	
-	public Candidate() {
-		
-	}
+	
 
-	public Candidate(int id, String firstName, String lastName, String nationalIdentity, LocalDate birthYear) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nationalIdentity = nationalIdentity;
-		this.birthYear = birthYear;
-	}
 	
 	
 

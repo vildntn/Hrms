@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 @Data
@@ -25,6 +27,7 @@ import lombok.Data;
 @Table(name="users")
 @AllArgsConstructor
 @Inheritance(strategy =InheritanceType.JOINED)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

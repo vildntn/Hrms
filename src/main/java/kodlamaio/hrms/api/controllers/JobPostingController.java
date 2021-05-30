@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.JobPostingService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concreates.JobPosting;
 
@@ -32,4 +34,15 @@ public class JobPostingController {
 	public Result add(@RequestBody JobPosting jobPosting){
 		return jobPostingService.add(jobPosting);
 	}
+	
+	@GetMapping("/getAllActiveJobPostingByEmployer")
+	public DataResult<List<JobPosting>> getAllActiveJobPostingByEmployer( @RequestParam int id){
+		return jobPostingService.getAllActiveJobPostingByEmployer(id);
+	}
+	
+	@GetMapping("/getall")
+	public DataResult<List<JobPosting>> getAll(){
+		return jobPostingService.getAll();
+	}
+	
 }

@@ -42,6 +42,7 @@ public class Employer {
 	@OneToOne
 	@MapsId
 	@JoinColumn(name="id")
+	
 	private User user;
 	
 	

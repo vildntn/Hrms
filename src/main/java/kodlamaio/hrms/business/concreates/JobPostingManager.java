@@ -3,15 +3,18 @@ package kodlamaio.hrms.business.concreates;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
+import kodlamaio.hrms.entities.concreates.JobPosition;
 import kodlamaio.hrms.entities.concreates.JobPosting;
 @Service
 public class JobPostingManager implements JobPostingService {
@@ -42,14 +45,18 @@ public class JobPostingManager implements JobPostingService {
 
 	@Override
 	public DataResult<List<JobPosting>> getAllActiveJobPostingByEmployer(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getAllActiveJobPostingByEmployer(id));
 	}
 
 	@Override
-	public DataResult<List<JobPosting>> getAllActiveJobPostingByDate() {
-		// TODO Auto-generated method stub
-		return null;
+	public DataResult<List<JobPosting>> getAllActiveJobPostingByDate()
+	{
+		Sort sort=Sort.by(Sort.Direction.DESC, "createdDate");
+		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getAllActiveJobPostingByDate(sort));
 	}
+
+
+
+	
 
 }

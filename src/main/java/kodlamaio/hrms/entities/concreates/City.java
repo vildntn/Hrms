@@ -32,5 +32,6 @@ public class City {
 	private String city;
 
 	@OneToMany(mappedBy = "city")
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private List<JobPosting> jobPostings;
 }

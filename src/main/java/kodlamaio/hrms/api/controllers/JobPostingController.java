@@ -45,4 +45,17 @@ public class JobPostingController {
 		return jobPostingService.getAll();
 	}
 	
+	@GetMapping("/getActiveJobPosting")
+	public DataResult<List<JobPosting>> getActiveJobPosting(){
+		return jobPostingService.getActiveJobPosting();
+	}
+	
+	
+	@GetMapping("/getAllActiveJobPostingByDate")
+	public DataResult<List<JobPosting>> getAllActiveJobPostingByDate(){
+		return jobPostingService.getAllActiveJobPostingByDate();
+	}
+	
+
+	
 }

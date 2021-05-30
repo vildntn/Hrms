@@ -10,4 +10,5 @@ public interface JobPositionService {
    DataResult<List<JobPosition>> getAll();
    List<JobPosition> getByJobTitle(String name);
    Result add(JobPosition jobPosition);
+   
 }

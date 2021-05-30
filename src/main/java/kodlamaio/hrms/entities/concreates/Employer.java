@@ -24,7 +24,7 @@ import lombok.Data;
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name="id")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-public class Employer {
+public class Employer extends User{
 	@Id
 	@Column(name="id")
 	private int id;
@@ -37,13 +37,6 @@ public class Employer {
 	
 	@Column(name="phone_number")
 	private String phoneNumber;
-	
-	
-	@OneToOne
-	@MapsId
-	@JoinColumn(name="id")
-	
-	private User user;
 	
 	
 	@OneToMany(mappedBy = "employer")

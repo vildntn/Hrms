@@ -61,19 +61,19 @@ public class AuthManager implements AuthService{
 
 	@Override
 	public Result registerByEmployer(Employer employer, String rePassword) {
-//		if(!checkIfEmployerExist(employer.getUser().getEmail())) {
-//			return new  ErrorResult("Registration failed cause this e-mail address is already in use!");
-//		}
+		if(!checkIfEmployerExist(employer.getEmail())) {
+			return new  ErrorResult("Registration failed cause this e-mail address is already in use!");
+		}
 		if(!checkForNullOfEmployerInfo(employer)) {
 			return new  ErrorResult("You must not leave any blank space.");
-		}if(!checkIfEmailAndDomainSame(employer.getUser().getEmail(),employer.getWebAddress())) {
+		}if(!checkIfEmailAndDomainSame(employer.getEmail(),employer.getWebAddress())) {
 			return new  ErrorResult("Please enter a valid e-mail address!");
 		}
 		
-		if(!checkEmailVerification(employer.getUser().getEmail())) {
+		if(!checkEmailVerification(employer.getEmail())) {
 			return new  ErrorResult("Verification failed!");
 		}
-		  if(!checkIfPasswordTrue(employer.getUser().getPassword(), rePassword)) {
+		  if(!checkIfPasswordTrue(employer.getPassword(), rePassword)) {
 	  			return new  ErrorResult("Passwords do not match! Check again!");
 	  		}
 			employerService.add(employer);
@@ -89,15 +89,15 @@ public class AuthManager implements AuthService{
 		return true;
 		}
 	}
-//	@Override
-//	public boolean checkIfEmployerExist(String email) {
-//		if(employerService.getByEmail(email).getData()!=null) {
-//              return false;
-//			
-//		}else {
-//		return true;
-//		}
-//	}
+	@Override
+	public boolean checkIfEmployerExist(String email) {
+		if(employerService.getByEmail(email).getData()!=null) {
+              return false;
+			
+		}else {
+		return true;
+		}
+	}
 	
 	
 	private boolean checkForNullOfUserInfo(Candidate candidate) {
@@ -111,8 +111,8 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean checkForNullOfEmployerInfo(Employer employer) {
-		if(!employer.getCompanyName().isEmpty()&&!employer.getUser().getEmail().isEmpty()&&!employer.getWebAddress().isEmpty()&&
-				!employer.getPhoneNumber().isEmpty()&&!employer.getUser().getPassword().isEmpty()) {
+		if(!employer.getCompanyName().isEmpty()&&!employer.getEmail().isEmpty()&&!employer.getWebAddress().isEmpty()&&
+				!employer.getPhoneNumber().isEmpty()&&!employer.getPassword().isEmpty()) {
 			return true;
 		}
 		return false;

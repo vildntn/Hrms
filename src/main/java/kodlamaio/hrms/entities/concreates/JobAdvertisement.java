@@ -18,10 +18,10 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="job_postings")
+@Table(name="job_advertisement")
 @AllArgsConstructor
 
-public class JobPosting {
+public class JobAdvertisement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,7 +62,7 @@ public class JobPosting {
 	@Column(name="created_date")
 	private Date createdDate;
 	
-	public JobPosting() {
+	public JobAdvertisement() {
 		
 	}
 

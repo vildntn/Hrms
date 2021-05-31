@@ -24,7 +24,7 @@ import lombok.Data;
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name="id")
 @JsonIgnoreProperties(ignoreUnknown = true, 
-value = {"hibernateLazyInitializer", "handler", "jobPostings"})
+value = {"hibernateLazyInitializer", "handler", "jobAdvertisement"})
 public class Employer extends User{
 	@Id
 	@Column(name="id")
@@ -41,7 +41,7 @@ public class Employer extends User{
 	
 	
 	@OneToMany(mappedBy = "employer")
-	private List<JobPosting> jobPostings;
+	private List<JobAdvertisement> jobAdvertisement;
 	
 	
 //   Deneme1

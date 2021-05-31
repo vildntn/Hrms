@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kodlamaio.hrms.business.abstracts.JobPostingService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
+import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
@@ -30,7 +31,7 @@ public class JobPostingManager implements JobPostingService {
 	@Override
 	public Result add(JobPosting jobPosting) {
 		jobPostingDao.save(jobPosting);
-		return new SuccessResult("iş ilanı eklendi");
+		return new SuccessResult("job posting added.");
 	}
 
 	@Override
@@ -53,6 +54,22 @@ public class JobPostingManager implements JobPostingService {
 	{
 		Sort sort=Sort.by(Sort.Direction.DESC, "createdDate");
 		return new SuccessDataResult<List<JobPosting>>(jobPostingDao.getAllActiveJobPostingByDate(sort));
+	}
+
+	@Override
+	public DataResult<JobPosting> findById(int id) {
+		return new SuccessDataResult<JobPosting>(jobPostingDao.findById(id));
+	}
+
+	@Override
+	public Result closeJobPosting(int id) {
+		if(findById(id).getData().isStatus()==false) {
+			return new ErrorResult("There is no such job posting exists!");
+		}
+		JobPosting findByIdGetData=findById(id).getData();
+		findByIdGetData.setStatus(false);
+		this.jobPostingDao.save(findByIdGetData);
+		return new SuccessResult("Job posting successfully closed.");
 	}
 
 

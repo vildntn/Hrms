@@ -17,5 +17,9 @@ public interface JobPostingService {
 	DataResult<List<JobPosting>> getActiveJobPosting();
 	DataResult<List<JobPosting>> getAllActiveJobPostingByEmployer(int id);
 	DataResult<List<JobPosting>> getAllActiveJobPostingByDate();
+	
+	DataResult<JobPosting> findById(int id);
+	
+	Result closeJobPosting(int id);
 
 }

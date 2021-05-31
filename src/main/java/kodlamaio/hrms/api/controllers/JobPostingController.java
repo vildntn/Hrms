@@ -56,6 +56,10 @@ public class JobPostingController {
 		return jobPostingService.getAllActiveJobPostingByDate();
 	}
 	
+	@PostMapping("/closeJobPosting")
+	public Result closeJobPosting(@RequestParam int id){
+		return this.jobPostingService.closeJobPosting(id);
+	}
 
 	
 }

@@ -20,7 +20,7 @@ import lombok.Data;
 @Entity
 @Table(name="job_postings")
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+
 public class JobPosting {
 
 	@Id

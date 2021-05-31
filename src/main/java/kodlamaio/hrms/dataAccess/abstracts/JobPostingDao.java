@@ -12,11 +12,13 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
 	@Query("From JobPosting where status=true")
 	List<JobPosting> getActiveJobPosting();
 	
-	@Query("From JobPosting where status=true and id=:id")
+	@Query("From JobPosting where status=true and employer_id=:id")
 	List<JobPosting> getAllActiveJobPostingByEmployer(int id);
 	
 	//değişicek //değişmeli //uyuyorum , beynim iptal
 	@Query("From JobPosting where status=true")
 	List<JobPosting> getAllActiveJobPostingByDate(Sort sort);
+	
+	JobPosting findById(int id);
 	
 }

@@ -16,18 +16,19 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="job_positions")
+@JsonIgnoreProperties(ignoreUnknown = true, 
+value = {"hibernateLazyInitializer", "handler","jobPostings"})
+ public class JobPosition {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name="id")
+  private int id;
+ 
+  @Column(name="job_title")
+  private String jobTitle;
+ 
+  @OneToMany(mappedBy = "jobPosition")
 
-public class JobPosition {
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- @Column(name="id")
- private int id;
- 
- @Column(name="job_title")
- private String jobTitle;
- 
- @OneToMany(mappedBy = "jobPosition")
- @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private List<JobPosting> jobPostings;
  
  public JobPosition() {

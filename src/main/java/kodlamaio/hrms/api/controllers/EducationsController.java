@@ -39,8 +39,8 @@ public class EducationsController {
 		return EducationService.getAll();
 	}
 	
-	@GetMapping("/getCandidateEducationInfoSortedGradYear")
-	public DataResult<List<CandidateEducationInfoSortedGradYearDto>> getCandidateEducationInfoSortedGradYear(int id){
-		return EducationService.getCandidateEducationInfoSortedGradYear(id);
+	@GetMapping("/getAllEducationOrderByGraduatedDate")
+	public DataResult<List<Education>> getAllEducationOrderByGraduatedDate(int id){
+		return EducationService.getAllEducationOrderByGraduatedDate(id);
 	}
 }

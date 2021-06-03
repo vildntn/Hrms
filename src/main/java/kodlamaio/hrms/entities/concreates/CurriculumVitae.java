@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +26,8 @@ import lombok.NoArgsConstructor;
 @Table(name="curriculum_vitaes")
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","educations"})
+
 public class CurriculumVitae {
 
 	@Id
@@ -60,6 +64,7 @@ public class CurriculumVitae {
 	 @OneToMany(mappedBy = "curriculumVitae" ) 
 	 private List<ProgramOrTechnologyLanguage> programOrTechnologyLanguages;
 	  
+
 	 @OneToMany(mappedBy = "curriculumVitae" ) 
 	 private List<Education> educations;
 	 

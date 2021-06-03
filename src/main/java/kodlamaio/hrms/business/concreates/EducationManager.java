@@ -44,8 +44,8 @@ private EducationDao educationDao;
 
 
 	@Override
-	public DataResult<List<CandidateEducationInfoSortedGradYearDto>> getCandidateEducationInfoSortedGradYear(int id) {
-		return new SuccessDataResult<List<CandidateEducationInfoSortedGradYearDto>>(educationDao.getCandidateEducationInfoSortedGradYear(id));
+	public DataResult<List<Education>> getAllEducationOrderByGraduatedDate(int id) {
+		return new SuccessDataResult<List<Education>>(educationDao.getAllEducationOrderByGraduatedDate(id));
 	}
 
 }

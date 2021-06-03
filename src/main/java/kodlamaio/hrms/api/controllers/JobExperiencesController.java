@@ -13,7 +13,7 @@ import kodlamaio.hrms.business.abstracts.JobExperinceService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concreates.JobExperience;
-import kodlamaio.hrms.entities.dtos.CandidateJobExperienceInfoSortedByDate;
+
 
 @RestController
 @RequestMapping("/api/jobExperience")
@@ -31,8 +31,8 @@ public class JobExperiencesController {
 		return jobExperienceService.add(jobExperience);
 	}
 
-	@GetMapping("/getCandidateJobExperienceInfoSortedByDate")
-	public DataResult<List<CandidateJobExperienceInfoSortedByDate>> getCandidateJobExperienceInfoSortedByDate(int id){
-		return this.jobExperienceService.getCandidateJobExperienceInfoSortedByDate(id);
+	@GetMapping("/getAllJobExperienceByCandidateIdByDate")
+	public DataResult<List<JobExperience>> getAllJobExperienceByCandidateIdByDate(int id){
+		return this.jobExperienceService.getAllJobExperienceByCandidateIdByDate(id);
 		}
 }

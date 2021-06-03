@@ -31,8 +31,8 @@ public class JobExperienceManager implements JobExperinceService {
 	}
 
 	@Override
-	public DataResult<List<CandidateJobExperienceInfoSortedByDate>> getCandidateJobExperienceInfoSortedByDate(int id) {
-		return new SuccessDataResult<List<CandidateJobExperienceInfoSortedByDate>>(jobExperienceDao.getCandidateJobExperienceInfoSortedByDate(id));
+	public DataResult<List<JobExperience>> getAllJobExperienceByCandidateIdByDate(int id) {
+		return new SuccessDataResult<List<JobExperience>>(jobExperienceDao.getAllJobExperienceByCandidateIdByDate(id));
 	}
 
 }

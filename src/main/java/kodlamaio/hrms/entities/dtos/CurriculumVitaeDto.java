@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CurriculumVitaeDto {
-
+	//Devamı gelicek inş
 	private List<Education> educations;
 	private List<JobExperience> jobExperiences;
 	

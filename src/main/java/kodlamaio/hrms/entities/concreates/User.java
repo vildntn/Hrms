@@ -27,7 +27,7 @@ import lombok.Data;
 @Table(name="users")
 @AllArgsConstructor
 @Inheritance(strategy =InheritanceType.JOINED)
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

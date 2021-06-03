@@ -57,8 +57,13 @@
 	    <artifactId>springfox-swagger-ui</artifactId>
 	    <version>2.9.2</version>
 	</dependency>
-	</dependencies>
+   <dependency>
+		    <groupId>com.cloudinary</groupId>
+		    <artifactId>cloudinary-http44</artifactId>
+		    <version>1.29.0</version>
+		</dependency>
 
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>

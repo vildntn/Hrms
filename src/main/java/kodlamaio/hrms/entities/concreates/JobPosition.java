@@ -16,8 +16,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="job_positions")
-@JsonIgnoreProperties(ignoreUnknown = true, 
-value = {"hibernateLazyInitializer", "handler","jobAdvertisement"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
  public class JobPosition {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

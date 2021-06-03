@@ -1,5 +1,9 @@
 package kodlamaio.hrms.entities.concreates;
 
+
+
+
+
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -12,61 +16,41 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="job_advertisement")
+@Table(name="employers_activation_by_staff")
+@NoArgsConstructor
 @AllArgsConstructor
-
-public class JobAdvertisement {
+public class EmployerActivationByStaff {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn(name="employer_id")
-	
+	@ManyToOne()
+	@JoinColumn(name="employers_id")
 	private Employer employer;
 	
-	@ManyToOne
-	@JoinColumn(name="job_position_id")
-	private JobPosition  jobPosition;
-	
 	@ManyToOne()
-	@JoinColumn(name="city_id")
-	private City city;
+	@JoinColumn(name="staffs_id")
+	private Staff staff;
 	
-	@Column(name="job_description")
-	private String jobDescription;
+	@Column(name="is_confirmed")
+	private boolean is_confirmed;
 	
-	@Column(name="open_position")
-	private int openPosition;
-	
-	@Column(name="max_salary")
-	private int maxSalary;
-	
-	@Column(name="min_salary")
-	private int minSalary;
-	
-	@Column(name="application_deadline")
-	private LocalDate applicationDeadline;
+	@Column(name="confirmed_date")
+	private LocalDate confirmed_date;
 	
 	@Column(name="status")
 	private boolean status;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
-	public JobAdvertisement() {
-		
-	}
-
-
 	
 }

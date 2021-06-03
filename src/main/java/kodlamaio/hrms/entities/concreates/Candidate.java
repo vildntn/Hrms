@@ -36,7 +36,7 @@ public class Candidate extends User {
 	private String nationalIdentity;
 	
 	@Column(name="birth_year")
-	private Date birthYear;
+	private LocalDate birthYear;
 	
 	
 

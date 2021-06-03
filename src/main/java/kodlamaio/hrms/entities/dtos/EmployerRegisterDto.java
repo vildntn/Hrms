@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.dto;
+package kodlamaio.hrms.entities.dtos;
 
 public class EmployerRegisterDto {
 

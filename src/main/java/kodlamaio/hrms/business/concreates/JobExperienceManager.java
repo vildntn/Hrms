@@ -27,7 +27,7 @@ public class JobExperienceManager implements JobExperinceService {
 	@Override
 	public Result add(JobExperience jobExperience) {
 		jobExperienceDao.save(jobExperience);
-		return new SuccessResult("İş deneyimi eklendi");
+		return new SuccessResult("New Job experiences added");
 	}
 
 	@Override

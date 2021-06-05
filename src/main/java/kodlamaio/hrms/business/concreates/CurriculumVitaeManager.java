@@ -43,7 +43,7 @@ public class CurriculumVitaeManager implements CurriculumVitaeService{
 	@Override
 	public Result add(CurriculumVitae curriculumVitae) {
 		curriculumVitaeDao.save(curriculumVitae);
-		return new SuccessResult("Eklendi");
+		return new SuccessResult("Cv added");
 	}
 	@Override
 	public DataResult<List<CurriculumVitae>> getAll() {
@@ -60,7 +60,7 @@ public class CurriculumVitaeManager implements CurriculumVitaeService{
 		CurriculumVitae cv=curriculumVitaeDao.getOne(cvId);
 		cv.setPhotoUrl(photoUrl);
 		curriculumVitaeDao.save(cv);
-		return new SuccessResult("Photo eklendi");
+		return new SuccessResult("Photo added");
 	}
 
 

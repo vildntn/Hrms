@@ -13,9 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CandidateEducationInfoDto {
 
-	
-	private String firstName;
-	private String lastName;
+
 	
 	private String educationName;
 	private String branchName;
@@ -23,8 +21,6 @@ public class CandidateEducationInfoDto {
 	
 	private String degreeName;
 	
-	private int degreeId;
-	private int cvId;
-	private int educationId;
+
 	
 }

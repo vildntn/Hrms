@@ -31,7 +31,7 @@ private EducationDao educationDao;
 	@Override
 	public Result add(Education education) {
 		educationDao.save(education);
-		return new SuccessResult("Eğitim eklendi");
+		return new SuccessResult("New education information added");
 	}
 
 

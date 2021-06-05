@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CandidateEducationInfoSortedGradYearDto {
+public class CandidateEducationInfoDto {
 
 	
 	private String firstName;

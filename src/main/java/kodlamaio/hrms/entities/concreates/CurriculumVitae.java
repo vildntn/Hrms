@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Table(name="curriculum_vitaes")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class CurriculumVitae {
 
 	@Id
@@ -58,15 +58,19 @@ public class CurriculumVitae {
 	
 	
 	 @OneToMany(mappedBy = "curriculumVitae" ) 
+	 @JsonIgnoreProperties({"hibernateLazyInitializer","handler", "foreignLanguages"})
 	 private List<ForeignLanguage> foreignLanguages;
 	  
-	 @OneToMany(mappedBy = "curriculumVitae" ) 
+	 @OneToMany(mappedBy = "curriculumVitae" )
+	 @JsonIgnoreProperties({"hibernateLazyInitializer","handler", "programOrTechnologyLanguages"})
 	 private List<ProgramOrTechnologyLanguage> programOrTechnologyLanguages;
 	  
 
 	 @OneToMany(mappedBy = "curriculumVitae" ) 
+	 @JsonIgnoreProperties({"hibernateLazyInitializer","handler", "educations"})
 	 private List<Education> educations;
 	 
 	 @OneToMany(mappedBy = "curriculumVitae" )
+	 @JsonIgnoreProperties({"hibernateLazyInitializer","handler", "jobExperiences"})
 	 private List<JobExperience> jobExperiences;
 }

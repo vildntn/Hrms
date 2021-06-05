@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name="candidates")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+
 public class Candidate extends User {
 	
 	

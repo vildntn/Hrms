@@ -12,7 +12,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.EducationDao;
 import kodlamaio.hrms.entities.concreates.Education;
-import kodlamaio.hrms.entities.dtos.CandidateEducationInfoSortedGradYearDto;
+import kodlamaio.hrms.entities.dtos.CandidateEducationInfoDto;
 @Service
 public class EducationManager implements EducationService{
 

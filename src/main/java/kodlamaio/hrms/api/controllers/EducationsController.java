@@ -13,7 +13,7 @@ import kodlamaio.hrms.business.abstracts.EducationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concreates.Education;
-import kodlamaio.hrms.entities.dtos.CandidateEducationInfoSortedGradYearDto;
+import kodlamaio.hrms.entities.dtos.CandidateEducationInfoDto;
 
 
 

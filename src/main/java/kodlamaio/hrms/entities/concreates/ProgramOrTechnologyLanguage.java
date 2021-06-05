@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Table(name="program_or_technology_languages")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProgramOrTechnologyLanguage {
 	
 	@Id

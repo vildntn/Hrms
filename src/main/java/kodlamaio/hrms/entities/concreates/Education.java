@@ -33,7 +33,6 @@ public class Education {
 	
 	@ManyToOne()
 	@JoinColumn(name="cv_id")
-
 	private CurriculumVitae curriculumVitae;
 	
 	@ManyToOne()

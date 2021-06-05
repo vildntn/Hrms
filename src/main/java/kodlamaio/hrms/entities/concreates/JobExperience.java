@@ -35,6 +35,7 @@ public class JobExperience {
 
 	@ManyToOne()
 	@JoinColumn(name="cv_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private CurriculumVitae curriculumVitae;
 	
 	@ManyToOne()

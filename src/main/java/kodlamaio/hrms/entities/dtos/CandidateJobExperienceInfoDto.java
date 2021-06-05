@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CandidateJobExperienceInfoSortedByDate {
+public class CandidateJobExperienceInfoDto {
 
 	private String positionName;
 	private String companyName;

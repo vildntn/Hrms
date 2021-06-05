@@ -34,6 +34,7 @@ public class VerificationCode {
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private User user;
 	
 	@Column(name="activation_code")

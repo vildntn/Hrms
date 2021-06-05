@@ -38,14 +38,15 @@ public class CurriculumVitae {
 	@JoinColumn(name = "candidate_id", referencedColumnName =  "id" ,nullable = false)
 	private Candidate candidate;
 	
-	@Column(name="photo_url")
-	private String photoUrl;
 	
 	@Column(name="github_url")
 	private String githubUrl;
 	
 	@Column(name="linkedin_url")
 	private String linkedinUrl;
+	
+	@Column(name="photo_url")
+	private String photoUrl;
 	
 	@Column(name="describe")
 	private String describe;

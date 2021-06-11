@@ -23,6 +23,7 @@ public class JobType {
 	@Column(name="id")
 	private int id;
 	
+	
 	@Column(name="job_type")
 	private String jobType;
 }

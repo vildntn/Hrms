@@ -23,7 +23,6 @@ public class WorkType {
 	@Column(name="id")
 	private int id;
 	
-	
 	@Column(name="work_type")
 	private String workType;
 

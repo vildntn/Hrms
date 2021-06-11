@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,11 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name="job_advertisement")
 @AllArgsConstructor
+@NoArgsConstructor
 public class JobAdvertisement {
 
 	@Id
@@ -28,9 +31,10 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn(name="employer_id")
-	
+	@ManyToOne(targetEntity = Employer.class ,fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "employer_id", referencedColumnName =  "id" ,nullable = false)
+//	@ManyToOne
+//	@JoinColumn(name="employer_id")
 	private Employer employer;
 	
 	@ManyToOne
@@ -61,10 +65,7 @@ public class JobAdvertisement {
 	
 	@Column(name="created_date")
 	private Date createdDate;
-	
-	public JobAdvertisement() {
-		
-	}
+
 
 
 	

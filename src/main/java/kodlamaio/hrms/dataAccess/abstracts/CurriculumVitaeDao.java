@@ -14,7 +14,7 @@ import kodlamaio.hrms.entities.concreates.CurriculumVitae;
 
 public interface CurriculumVitaeDao  extends JpaRepository<CurriculumVitae, Integer> {
 
-	@Query("From CurriculumVitae c Where c.candidate.id=:id")
+	@Query("From CurriculumVitae c Where c.jobSeeker.id=:id")
 	CurriculumVitae getCurriculumVitaeByCandidateId(int id);
 
 	

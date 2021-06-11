@@ -13,10 +13,10 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-
 import kodlamaio.hrms.dataAccess.abstracts.JobAdvertisementDao;
-import kodlamaio.hrms.entities.concreates.JobPosition;
 import kodlamaio.hrms.entities.concreates.JobAdvertisement;
+import kodlamaio.hrms.entities.concreates.JobPosition;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
 	
@@ -40,20 +40,20 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getActiveJobPosting() {
-		return new SuccessDataResult<List<JobAdvertisement>>(jobAdvertisementDao.getActiveJobPosting());
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisement() {
+		return new SuccessDataResult<List<JobAdvertisement>>(jobAdvertisementDao.getActiveJobAdvertisement());
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getAllActiveJobPostingByEmployer(int id) {
-		return new SuccessDataResult<List<JobAdvertisement>>(jobAdvertisementDao.getAllActiveJobPostingByEmployer(id));
+	public DataResult<List<JobAdvertisement>> getAllActiveJobAdvertisementByEmployer(int id) {
+		return new SuccessDataResult<List<JobAdvertisement>>(jobAdvertisementDao.getAllActiveJobAdvertisementByEmployer(id));
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getAllActiveJobPostingByDate()
+	public DataResult<List<JobAdvertisement>> getAllActiveJobAdvertisementByDate()
 	{
 		Sort sort=Sort.by(Sort.Direction.DESC, "createdDate");
-		return new SuccessDataResult<List<JobAdvertisement>>(jobAdvertisementDao.getAllActiveJobPostingByDate(sort));
+		return new SuccessDataResult<List<JobAdvertisement>>(jobAdvertisementDao.getAllActiveJobAdvertisementByDate(sort));
 	}
 
 	@Override
@@ -70,6 +70,11 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		findByIdGetData.setStatus(false);
 		this.jobAdvertisementDao.save(findByIdGetData);
 		return new SuccessResult("Job posting successfully closed.");
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisementDto>> getAllActiveJobAdvertisement() {
+		return new SuccessDataResult<List<JobAdvertisementDto>>(jobAdvertisementDao.getAllActiveJobAdvertisement());
 	}
 
 

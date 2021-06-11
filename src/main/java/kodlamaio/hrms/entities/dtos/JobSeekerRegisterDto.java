@@ -1,5 +1,5 @@
 package kodlamaio.hrms.entities.dtos;
 
-public class CandidateRegisterDto {
+public class JobSeekerRegisterDto {
 
 }

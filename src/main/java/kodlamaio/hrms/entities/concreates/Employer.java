@@ -2,28 +2,35 @@ package kodlamaio.hrms.entities.concreates;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Data
 @Entity
 @Table(name="employers")
 @AllArgsConstructor
+@NoArgsConstructor
 @PrimaryKeyJoinColumn(name="id")
-public class Employer extends User{
+
+public class Employer{
 	@Id
 	@Column(name="id")
 	private int id;
@@ -38,20 +45,21 @@ public class Employer extends User{
 	private String phoneNumber;
 	
 	
-	@OneToMany(mappedBy = "employer")
-	 @JsonIgnoreProperties({"hibernateLazyInitializer","handler", "jobAdvertisement"})
-	private List<JobAdvertisement> jobAdvertisement;
+//	@OneToMany(mappedBy = "employer")
+//	private List<JobAdvertisement> jobAdvertisements;
 	
-	
-//   Deneme1
-//	@OneToOne
-//	@MapsId
-//	@JoinColumn(name="id")
-//	
+//	@OneToOne(targetEntity = User.class ,fetch = FetchType.LAZY, optional = false)
+//	@JoinColumn(name = "id", referencedColumnName =  "id" ,nullable = false)
 //	private User user;
-	public Employer() {
-		
-	}
+	
+	@OneToOne()
+	@MapsId
+	@JoinColumn(name="id")
+	
+	private User user;
+
+	
+
 	
 
 	

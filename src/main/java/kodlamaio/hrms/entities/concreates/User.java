@@ -22,12 +22,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name="users")
 @AllArgsConstructor
 @Inheritance(strategy =InheritanceType.JOINED)
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@NoArgsConstructor
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -50,11 +51,8 @@ public class User {
 //	@OneToOne(mappedBy = "user", cascade=CascadeType.ALL)
 //	@PrimaryKeyJoinColumn
 //	private Employer employer;
-//	
 	
-	public User() {
-		
-	}
+
 
 	
 	

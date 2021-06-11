@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,11 +15,13 @@ import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concreates.JobAdvertisement;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
+@CrossOrigin
 public class JobAdvertisementsController {
 
 	private JobAdvertisementService jobAdvertisementService;
@@ -37,7 +40,7 @@ public class JobAdvertisementsController {
 	
 	@GetMapping("/getAllActiveJobPostingByEmployer")
 	public DataResult<List<JobAdvertisement>> getAllActiveJobPostingByEmployer( @RequestParam int id){
-		return jobAdvertisementService.getAllActiveJobPostingByEmployer(id);
+		return jobAdvertisementService.getAllActiveJobAdvertisementByEmployer(id);
 	}
 	
 	@GetMapping("/getall")
@@ -47,13 +50,13 @@ public class JobAdvertisementsController {
 	
 	@GetMapping("/getActiveJobPosting")
 	public DataResult<List<JobAdvertisement>> getActiveJobPosting(){
-		return jobAdvertisementService.getActiveJobPosting();
+		return jobAdvertisementService.getActiveJobAdvertisement();
 	}
 	
 	
 	@GetMapping("/getAllActiveJobPostingByDate")
 	public DataResult<List<JobAdvertisement>> getAllActiveJobPostingByDate(){
-		return jobAdvertisementService.getAllActiveJobPostingByDate();
+		return jobAdvertisementService.getAllActiveJobAdvertisementByDate();
 	}
 	
 	@PostMapping("/closeJobPosting")
@@ -61,5 +64,9 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.closeJobPosting(id);
 	}
 
-	
+	@GetMapping("/getAllActiveJobAdvertisement")
+	public DataResult<List<JobAdvertisementDto>> getAllActiveJobAdvertisement(){
+		return this.jobAdvertisementService.getAllActiveJobAdvertisement();
+	}
+ 	
 }

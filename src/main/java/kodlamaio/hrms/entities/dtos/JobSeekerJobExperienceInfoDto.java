@@ -1,26 +1,21 @@
 package kodlamaio.hrms.entities.dtos;
 
-
-
-
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class CandidateEducationInfoDto {
+public class JobSeekerJobExperienceInfoDto {
 
-
-	
-	private String educationName;
-	private String branchName;
-	private Date graduatedDate;
-	
-	private String degreeName;
-	
-
+	private String positionName;
+	private String companyName;
+	private Date startDate;
+	private Date endDate;
 	
 }

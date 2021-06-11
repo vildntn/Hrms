@@ -4,31 +4,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.AuthService;
-import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.abstracts.JobSeekerService;
 import kodlamaio.hrms.business.abstracts.EmailVerificationService;
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.core.utilities.adapters.MernisService;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.entities.concreates.Candidate;
+import kodlamaio.hrms.entities.concreates.JobSeeker;
 import kodlamaio.hrms.entities.concreates.Employer;
 import kodlamaio.hrms.entities.concreates.User;
 
 @Service
 public class AuthManager implements AuthService{
 	
-	private CandidateService candidateService;
+	private JobSeekerService jobSeekerService;
 	private EmployerService employerService;
 	private EmailVerificationService emailVerificationService;
 	private MernisService mernisService;
 	
     @Autowired
-	public AuthManager(CandidateService candidateService, EmployerService employerService, 
+	public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService, 
 			EmailVerificationService emailVerificationService,
 			MernisService mernisService) {
 		super();
-		this.candidateService = candidateService;
+		this.jobSeekerService = jobSeekerService;
 		this.employerService=employerService;
 		this.emailVerificationService=emailVerificationService;
 		this.mernisService=mernisService;
@@ -36,23 +36,23 @@ public class AuthManager implements AuthService{
  
     
 	@Override
-	public Result registerByCandidate(Candidate candidate, String rePassword) {
-		if(!checkIfUserReal(candidate.getFirstName(), candidate.getLastName())) {
+	public Result registerByJobSeeker(JobSeeker jobSeeker, String rePassword) {
+		if(!checkIfUserReal(jobSeeker.getFirstName(), jobSeeker.getLastName())) {
 			 return new ErrorResult("No such person was found.");
 		}
-		if(!checkForNullOfUserInfo(candidate)) {
+		if(!checkForNullOfUserInfo(jobSeeker)) {
 	            return new ErrorResult("You must not leave any blank space.");
 		}
-		if(!checkIfUserExist(candidate.getEmail())) {
+		if(!checkIfUserExist(jobSeeker.getUser().getEmail())) {
 			 return new ErrorResult("Registration failed cause this e-mail address is already in use!");
 		}
-         if(checkIfNationalIdentityExist(candidate.getNationalIdentity())){
+         if(checkIfNationalIdentityExist(jobSeeker.getNationalIdentity())){
         	 return new ErrorResult("Someone with this nationality identity already exists!");
          }
-         if(!checkEmailVerification(candidate.getEmail())) {
+         if(!checkEmailVerification(jobSeeker.getUser().getEmail())) {
  			return new  ErrorResult("Verification failed!");
  		}
-         if(!checkIfPasswordTrue(candidate.getPassword(), rePassword)) {
+         if(!checkIfPasswordTrue(jobSeeker.getUser().getPassword(), rePassword)) {
   			return new  ErrorResult("Passwords do not match! Check again!");
   		}
 			//candidateService.add(candidate);
@@ -61,28 +61,28 @@ public class AuthManager implements AuthService{
 
 	@Override
 	public Result registerByEmployer(Employer employer, String rePassword) {
-		if(!checkIfEmployerExist(employer.getEmail())) {
+		if(!checkIfEmployerExist(employer.getUser().getEmail())) {
 			return new  ErrorResult("Registration failed cause this e-mail address is already in use!");
 		}
 		if(!checkForNullOfEmployerInfo(employer)) {
 			return new  ErrorResult("You must not leave any blank space.");
-		}if(!checkIfEmailAndDomainSame(employer.getEmail(),employer.getWebAddress())) {
+		}if(!checkIfEmailAndDomainSame(employer.getUser().getEmail(),employer.getWebAddress())) {
 			return new  ErrorResult("Please enter a valid e-mail address!");
 		}
 		
-		if(!checkEmailVerification(employer.getEmail())) {
+		if(!checkEmailVerification(employer.getUser().getEmail())) {
 			return new  ErrorResult("Verification failed!");
 		}
-		  if(!checkIfPasswordTrue(employer.getPassword(), rePassword)) {
+		  if(!checkIfPasswordTrue(employer.getUser().getPassword(), rePassword)) {
 	  			return new  ErrorResult("Passwords do not match! Check again!");
 	  		}
-			employerService.add(employer);
+			//employerService.add(employer);
 			return new SuccessResult("Registration is successful!");
 	}
 
 	@Override
 	public boolean checkIfUserExist(String email) {
-		if(candidateService.getByMail(email).getData()!=null) {
+		if(jobSeekerService.getByMail(email).getData()!=null) {
 			return false;
 			
 		}else {
@@ -100,10 +100,10 @@ public class AuthManager implements AuthService{
 	}
 	
 	
-	private boolean checkForNullOfUserInfo(Candidate candidate) {
-		if(!candidate.getFirstName().isEmpty()&& !candidate.getLastName().isEmpty()&&!candidate.getEmail().isEmpty()
-				&&!candidate.getPassword().isEmpty()&&
-				!candidate.getNationalIdentity().isEmpty()&&candidate.getBirthYear()!=null) {
+	private boolean checkForNullOfUserInfo(JobSeeker jobSeeker) {
+		if(!jobSeeker.getFirstName().isEmpty()&& !jobSeeker.getLastName().isEmpty()&&!jobSeeker.getUser().getEmail().isEmpty()
+				&&!jobSeeker.getUser().getPassword().isEmpty()&&
+				!jobSeeker.getNationalIdentity().isEmpty()&&jobSeeker.getBirthYear()!=null) {
 			return true;
 		}else {
 			return false;
@@ -111,8 +111,8 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean checkForNullOfEmployerInfo(Employer employer) {
-		if(!employer.getCompanyName().isEmpty()&&!employer.getEmail().isEmpty()&&!employer.getWebAddress().isEmpty()&&
-				!employer.getPhoneNumber().isEmpty()&&!employer.getPassword().isEmpty()) {
+		if(!employer.getCompanyName().isEmpty()&&!employer.getUser().getEmail().isEmpty()&&!employer.getWebAddress().isEmpty()&&
+				!employer.getPhoneNumber().isEmpty()&&!employer.getUser().getEmail().isEmpty()) {
 			return true;
 		}
 		return false;
@@ -129,7 +129,7 @@ public class AuthManager implements AuthService{
 	}
 	
 	private boolean checkIfNationalIdentityExist(String nationalityIdentity){
-		if(candidateService.getByNationalIdentity(nationalityIdentity)!=null) {
+		if(jobSeekerService.getByNationalIdentity(nationalityIdentity)!=null) {
 			return false;
 		}
 		return true;

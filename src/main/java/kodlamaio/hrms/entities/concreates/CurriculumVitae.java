@@ -35,8 +35,8 @@ public class CurriculumVitae {
 	private int id;
 	
 	@ManyToOne()
-	@JoinColumn(name = "candidate_id", referencedColumnName =  "id" ,nullable = false)
-	private Candidate candidate;
+	@JoinColumn(name = "job_seeker_id", referencedColumnName =  "id" ,nullable = false)
+	private JobSeeker jobSeeker;
 	
 	
 	@Column(name="github_url")

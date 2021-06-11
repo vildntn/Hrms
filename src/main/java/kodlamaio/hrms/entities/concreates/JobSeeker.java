@@ -19,12 +19,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
 @Entity
-@Table(name="candidates")
+@Table(name="job_seekers")
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Candidate extends User {
-	
+public class JobSeeker  {
+	@Id
+	@Column(name="id")
+	private int id;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -38,6 +39,9 @@ public class Candidate extends User {
 	@Column(name="birth_year")
 	private LocalDate birthYear;
 	
+	@OneToOne()
+	@JoinColumn(name = "id")
+	private User user;
 	
 
 	

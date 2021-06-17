@@ -45,8 +45,8 @@ public class CurriculumVitae {
 	@Column(name="linkedin_url")
 	private String linkedinUrl;
 	
-	@Column(name="photo_url")
-	private String photoUrl;
+//	@Column(name="photo_url")
+//	private String photoUrl;
 	
 	@Column(name="describe")
 	private String describe;
@@ -74,4 +74,6 @@ public class CurriculumVitae {
 	 @OneToMany(mappedBy = "curriculumVitae" )
 	 @JsonIgnoreProperties({"hibernateLazyInitializer","handler", "jobExperiences"})
 	 private List<JobExperience> jobExperiences;
+	 
+	
 }

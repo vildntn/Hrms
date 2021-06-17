@@ -24,9 +24,9 @@ public class EducationsController {
 	private EducationService EducationService;
 
 	@Autowired
-	public EducationsController(kodlamaio.hrms.business.abstracts.EducationService educationService) {
+	public EducationsController(EducationService educationService) {
 		super();
-		EducationService = educationService;
+		this.EducationService = educationService;
 	}
 
 	@PostMapping("/add")

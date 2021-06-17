@@ -30,7 +30,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 	@Override
 	public Result add(JobAdvertisement jobPosting) {
-		jobAdvertisementDao.save(jobPosting);
+		//jobAdvertisementDao.save(jobPosting);
 		return new SuccessResult("job posting added.");
 	}
 

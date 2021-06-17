@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 @Table(name="job_advertisement")
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class JobAdvertisement {
 
 	@Id
@@ -31,17 +32,17 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne(targetEntity = Employer.class ,fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(targetEntity = Employer.class , optional = false)
 	@JoinColumn(name = "employer_id", referencedColumnName =  "id" ,nullable = false)
-//	@ManyToOne
+	//@ManyToOne
 //	@JoinColumn(name="employer_id")
 	private Employer employer;
 	
-	@ManyToOne
+	@ManyToOne(targetEntity = JobPosition.class , optional = false)
 	@JoinColumn(name="job_position_id")
 	private JobPosition  jobPosition;
 	
-	@ManyToOne()
+	@ManyToOne(targetEntity = City.class)
 	@JoinColumn(name="city_id")
 	private City city;
 	
@@ -65,6 +66,14 @@ public class JobAdvertisement {
 	
 	@Column(name="created_date")
 	private Date createdDate;
+	
+	@ManyToOne
+	@JoinColumn(name="work_type_id")
+	private WorkType workType;
+	
+	@ManyToOne
+	@JoinColumn(name="job_type_id")
+	private JobType jobType;
 
 
 

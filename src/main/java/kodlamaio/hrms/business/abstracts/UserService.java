@@ -9,4 +9,5 @@ import kodlamaio.hrms.entities.concreates.User;
 public interface UserService {
 	 DataResult<List<User>> getAll();
 
+	DataResult<User> getById(int id);
 }

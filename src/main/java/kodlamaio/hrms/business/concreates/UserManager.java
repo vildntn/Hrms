@@ -24,6 +24,12 @@ public class UserManager implements UserService{
 	public DataResult<List<User>> getAll() {
 		return new SuccessDataResult<List<User>>(userDao.findAll());
 	}
+
+	@Override
+	public DataResult<User> getById(int id) {
+	
+		return new SuccessDataResult<User>(userDao.getOne(id));
+	}
 	
 
 }

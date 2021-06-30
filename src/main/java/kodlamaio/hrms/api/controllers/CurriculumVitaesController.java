@@ -51,11 +51,11 @@ public class CurriculumVitaesController {
 	}
 	
 
-	@PutMapping("/photoUpload")
-	public Result saveImage(@RequestBody MultipartFile file,@RequestParam int cvId) throws IOException {
-		return this.curriculumVitaeService.addPhoto(file, cvId);
-		
-	}
+//	@PutMapping("/photoUpload")
+//	public Result saveImage(@RequestBody MultipartFile file,@RequestParam int cvId) throws IOException {
+//		return this.curriculumVitaeService.addPhoto(file, cvId);
+//		
+//	}
 	
 	
 }

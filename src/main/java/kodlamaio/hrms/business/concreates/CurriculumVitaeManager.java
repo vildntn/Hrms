@@ -53,14 +53,24 @@ public class CurriculumVitaeManager implements CurriculumVitaeService{
 	public DataResult<CurriculumVitae> getCurriculumVitaeByCandidateId(int id) {
 	    return new SuccessDataResult<CurriculumVitae>(curriculumVitaeDao.getCurriculumVitaeByCandidateId(id));
 	}
+//	@Override
+//	public Result addPhoto(MultipartFile file, int cvId) throws IOException {
+//		Map map = cloudinaryService.upload(file);
+//		String photoUrl=map.get("url").toString();
+//		CurriculumVitae cv=curriculumVitaeDao.getOne(cvId);
+//		cv.setPhotoUrl(photoUrl);
+//		curriculumVitaeDao.save(cv);
+//		return new SuccessResult("Photo added");
+//	}
 	@Override
-	public Result addPhoto(MultipartFile file, int cvId) throws IOException {
-		Map map = cloudinaryService.upload(file);
-		String photoUrl=map.get("url").toString();
-		CurriculumVitae cv=curriculumVitaeDao.getOne(cvId);
-		cv.setPhotoUrl(photoUrl);
-		curriculumVitaeDao.save(cv);
-		return new SuccessResult("Photo added");
+	public Result delete(CurriculumVitae curriculumVitae) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Result update(CurriculumVitae curriculumVitae) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

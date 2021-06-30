@@ -10,4 +10,5 @@ import kodlamaio.hrms.entities.concreates.Staff;
 public interface StaffService {
 	DataResult<List<Staff>> getAll();
 	Result add(Staff staff);
+	DataResult<Staff> getById(int staffId);
 }

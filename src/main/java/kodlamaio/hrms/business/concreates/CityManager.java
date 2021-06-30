@@ -30,6 +30,7 @@ public class CityManager implements CityService {
 
 	@Override
 	public Result add(City city) {
+
 		cityDao.save(city);
 		return new SuccessResult("New city Added!");
 	}

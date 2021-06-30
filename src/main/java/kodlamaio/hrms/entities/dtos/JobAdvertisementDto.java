@@ -21,5 +21,7 @@ public class JobAdvertisementDto {
 	private int maxSalary;
 	private int openPosition;
 	private LocalDate applicationDeadline;
+	private String workType;
+	private String jobType;
 	
 }

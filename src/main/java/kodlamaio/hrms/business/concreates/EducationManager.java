@@ -48,4 +48,20 @@ private EducationDao educationDao;
 		return new SuccessDataResult<List<Education>>(educationDao.getAllEducationOrderByGraduatedDate(id));
 	}
 
+
+
+	@Override
+	public Result delete(Education education) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public Result Update(Education education) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

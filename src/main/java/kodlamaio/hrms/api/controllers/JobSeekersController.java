@@ -17,7 +17,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.entities.concreates.JobSeeker;
 
 @RestController
-@RequestMapping("/api/candidates")
+@RequestMapping("/api/jobSeekers")
 @CrossOrigin
 public class JobSeekersController {
 

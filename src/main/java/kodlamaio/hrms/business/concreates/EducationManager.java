@@ -17,7 +17,7 @@ import kodlamaio.hrms.entities.dtos.JobSeekerEducationInfoDto;
 public class EducationManager implements EducationService{
 
 	
-private EducationDao educationDao;
+     private EducationDao educationDao;
 	
 	
 	@Autowired

@@ -27,11 +27,9 @@ public class CityManager implements CityService {
 	public DataResult<List<City>> getAll() {
 		return new SuccessDataResult<List<City>>(cityDao.findAll());
 	}
-
 	@Override
 	public Result add(City city) {
 		cityDao.save(city);
 		return new SuccessResult("New city Added!");
 	}
-
 }

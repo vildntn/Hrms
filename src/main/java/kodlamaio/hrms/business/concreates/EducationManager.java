@@ -27,7 +27,6 @@ public class EducationManager implements EducationService{
 }
 
 
-
 	@Override
 	public Result add(Education education) {
 		educationDao.save(education);
@@ -35,19 +34,15 @@ public class EducationManager implements EducationService{
 	}
 
 
-
 	@Override
 	public DataResult<List<Education>> getAll() {
 		return new SuccessDataResult<List<Education>>(educationDao.findAll());
 	}
 
-
-
 	@Override
 	public DataResult<List<Education>> getAllEducationOrderByGraduatedDate(int id) {
 		return new SuccessDataResult<List<Education>>(educationDao.getAllEducationOrderByGraduatedDate(id));
 	}
-
 
 
 	@Override

@@ -27,12 +27,14 @@ public class ForeignLanguageManager implements ForeignLanguageService {
 		return new SuccessResult("New Foreign Language added!");
 	}
 
+	
 	@Override
 	public Result delete(ForeignLanguage foreignLanguage) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 	@Override
 	public Result update(ForeignLanguage foreignLanguage) {
 		// TODO Auto-generated method stub

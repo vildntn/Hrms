@@ -37,12 +37,8 @@ public class StaffManager implements StaffService {
 
 	@Override
 	public DataResult<Staff> getById(int staffId) {
-<<<<<<< Updated upstream
 		return new SuccessDataResult<Staff>(staffDao.getOne(staffId));
-=======
-		// TODO Auto-generated method stub
-		return null;
->>>>>>> Stashed changes
+
 	}
 
 }

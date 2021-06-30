@@ -24,6 +24,5 @@ public interface JobAdvertisementService {
 	
 	Result isJobAdvertConfirmed(int id);
 
-	Result isJobAdvertConfirmed(int id);
 
 }

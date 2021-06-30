@@ -69,6 +69,5 @@ public class CurriculumVitae {
 	 private List<Education> educations;
 	 
 	 @OneToMany(mappedBy = "curriculumVitae" )
-	 private List<JobExperience> jobExperiences;	 
-	
+	 private List<JobExperience> jobExperiences;	 	
 }

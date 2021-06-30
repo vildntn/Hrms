@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+
 import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
@@ -22,10 +23,13 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	
 	private JobAdvertisementDao jobAdvertisementDao;
 
+
 	@Autowired
 	public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao) {
 		super();
 		this.jobAdvertisementDao = jobAdvertisementDao;
+
+		
 	}
 
 	@Override
@@ -71,10 +75,23 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		this.jobAdvertisementDao.save(findByIdGetData);
 		return new SuccessResult("Job posting successfully closed.");
 	}
+	
 
 	@Override
 	public DataResult<List<JobAdvertisementDto>> getAllActiveJobAdvertisement() {
 		return new SuccessDataResult<List<JobAdvertisementDto>>(jobAdvertisementDao.getAllActiveJobAdvertisement());
+	}
+
+	@Override
+	public Result isJobAdvertConfirmed(int id) {
+
+		JobAdvertisement findByIdGetData=findById(id).getData();
+		if(findByIdGetData.isConfirmed()) {
+			return new SuccessResult("zaten onaylanmış");
+		}
+		findByIdGetData.setConfirmed(true);
+		this.jobAdvertisementDao.save(findByIdGetData);
+		return new SuccessResult("Job posting successfully confirmed.");
 	}
 
 

@@ -12,5 +12,7 @@ public interface EmployerService {
 	Result add(Employer employer);
 	DataResult<Employer> getByEmail(String email);
 	DataResult<Employer> getbyWebAddress(String webAddress);
+	Result update(Employer employer);
+	Result delete(Employer employer);
 
 }

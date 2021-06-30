@@ -16,5 +16,7 @@ public interface CurriculumVitaeService {
    Result add(CurriculumVitae curriculumVitae);
    DataResult<List<CurriculumVitae>> getAll();
    DataResult<CurriculumVitae>  getCurriculumVitaeByCandidateId(int id);
-   Result addPhoto(MultipartFile file, int cvId) throws IOException;
+  // Result addPhoto(MultipartFile file, int cvId) throws IOException;
+   Result delete(CurriculumVitae curriculumVitae);
+   Result update(CurriculumVitae curriculumVitae);
 }

@@ -47,4 +47,16 @@ public class EmployerManager implements EmployerService{
 		return new SuccessDataResult<Employer>(employerDao.findByWebAddress(webAddress));
 	}
 
+	@Override
+	public Result update(Employer employer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Result delete(Employer employer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

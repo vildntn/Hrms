@@ -67,6 +67,9 @@ public class JobAdvertisement {
 	@Column(name="created_date")
 	private Date createdDate;
 	
+	@Column(name="is_confirmed")
+	private boolean isConfirmed;
+	
 	@ManyToOne
 	@JoinColumn(name="work_type_id")
 	private WorkType workType;

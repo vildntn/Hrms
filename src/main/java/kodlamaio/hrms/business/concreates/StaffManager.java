@@ -35,4 +35,9 @@ public class StaffManager implements StaffService {
 		return new SuccessResult("New Staff Added!");
 	}
 
+	@Override
+	public DataResult<Staff> getById(int staffId) {
+		return new SuccessDataResult<Staff>(staffDao.getOne(staffId));
+	}
+
 }

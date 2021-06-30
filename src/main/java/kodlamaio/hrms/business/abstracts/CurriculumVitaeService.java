@@ -19,4 +19,5 @@ public interface CurriculumVitaeService {
   // Result addPhoto(MultipartFile file, int cvId) throws IOException;
    Result delete(CurriculumVitae curriculumVitae);
    Result update(CurriculumVitae curriculumVitae);
+   
 }

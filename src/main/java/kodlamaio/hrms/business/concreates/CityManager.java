@@ -22,7 +22,6 @@ public class CityManager implements CityService {
 		super();
 		this.cityDao = cityDao;
 	}
-
 	@Override
 	public DataResult<List<City>> getAll() {
 		return new SuccessDataResult<List<City>>(cityDao.findAll());

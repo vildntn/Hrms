@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(name="job_experiences")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","curriculumVitae"})
 public class JobExperience {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,6 @@ public class JobExperience {
 
 	@ManyToOne()
 	@JoinColumn(name="cv_id")
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private CurriculumVitae curriculumVitae;
 	
 	@ManyToOne()

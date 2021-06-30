@@ -1,7 +1,10 @@
 package kodlamaio.hrms.entities.concreates;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,34 +13,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="program_or_technology_languages")
+@Table(name="job_advert_activation_by_staff")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","curriculumVitae"})
-public class ProgramOrTechnologyLanguage {
-	
+public class JobAdvertActivationByStaff {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn(name="cv_id")
-	private CurriculumVitae curriculumVitae;
 	
 	@ManyToOne
-	@JoinColumn(name="type_name_id")
-	private ProgOrTechLangType progOrTechLangType;
+	@JoinColumn(name="job_advert_id")
+	private JobAdvertisement jobAdvertisement;
+	
 	
 	@ManyToOne
-	@JoinColumn(name="language_id")
-	private ProgOrTechLangName progOrTechLangName;
-
+	@JoinColumn(name="staff_id")
+	private Staff staff;
+	
+	
+	@Column(name="is_confirmed")
+	private boolean isConfirmed;
+	
+	
+	@Column(name="confirmed_date")
+	private LocalDateTime confirmedDate = LocalDateTime.now();;
 }

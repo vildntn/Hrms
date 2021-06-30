@@ -21,5 +21,7 @@ public interface JobAdvertisementService {
 	DataResult<JobAdvertisement> findById(int id);
 	
 	Result closeJobPosting(int id);
+	
+	Result isJobAdvertConfirmed(int id);
 
 }

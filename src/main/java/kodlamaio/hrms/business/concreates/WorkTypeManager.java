@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.WorkTypeService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobTypeDao;
 import kodlamaio.hrms.dataAccess.abstracts.WorkTypeDao;
 import kodlamaio.hrms.entities.concreates.WorkType;
@@ -28,6 +30,13 @@ public class WorkTypeManager implements WorkTypeService {
 	@Override
 	public DataResult<List<WorkType>> getAll() {
 		return new SuccessDataResult<List<WorkType>>(workTypeDao.findAll());
+	}
+
+
+	@Override
+	public Result add(WorkType workType) {
+		workTypeDao.save(workType);
+		return new SuccessResult("New Work Type Added!");
 	}
 	
 }

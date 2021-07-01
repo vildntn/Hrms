@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @AllArgsConstructor
 @NoArgsConstructor
-public class Staff extends User {
+public class Staff  {
 
 	@Id
 	@Column(name="id")
@@ -33,9 +34,10 @@ public class Staff extends User {
 	@Column(name="last_name")
 	private String lastName;
 	
-//	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade=CascadeType.ALL)
-//	@JoinColumn(name = "id")
-//	private User user;
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade=CascadeType.ALL)
+	@JoinColumn(name = "id")
+	@MapsId
+	private User user;
 	
 
 }

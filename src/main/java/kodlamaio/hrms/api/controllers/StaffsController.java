@@ -14,6 +14,7 @@ import kodlamaio.hrms.business.abstracts.StaffService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concreates.Staff;
+import kodlamaio.hrms.entities.dtos.StaffDto;
 
 
 @RestController
@@ -34,9 +35,26 @@ public class StaffsController {
 	public DataResult<List<Staff>> getAll(){
 		return staffService.getAll();
 	}
+	
 	@PostMapping("/add")
 	public Result add(@RequestBody Staff staff) {
 		return staffService.add(staff);	
 		}
 	
+	@PostMapping("/update")
+	public Result update(@RequestBody StaffDto staffDto) {
+		return staffService.update(staffDto);	
+		}
+	
+
+
+	@GetMapping("/getByEmail")
+	public DataResult<Staff> getByEmail(String email){
+		return staffService.getByEmail(email);
+	}
+	
+	@GetMapping("/getById")
+	public DataResult<Staff> getById(int id){
+		return staffService.getById(id);
+	}
 }

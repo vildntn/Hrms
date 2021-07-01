@@ -12,6 +12,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.StaffDao;
 import kodlamaio.hrms.entities.concreates.Staff;
+import kodlamaio.hrms.entities.dtos.StaffDto;
 
 @Service
 public class StaffManager implements StaffService {
@@ -40,5 +41,29 @@ public class StaffManager implements StaffService {
 		return new SuccessDataResult<Staff>(staffDao.getOne(staffId));
 
 	}
+
+	@Override
+	public Result update(StaffDto staffDto) {
+		//It explodes when empty data is gone,must change
+		Staff updatedStaff=staffDao.getOne(staffDto.getId());
+		updatedStaff.setFirstName(staffDto.getFirstName());
+		updatedStaff.setLastName(staffDto.getLastName());
+		updatedStaff.getUser().setEmail(staffDto.getEmail());
+		staffDao.save(updatedStaff);
+		return new SuccessResult("Informations updated");
+	}
+
+	@Override
+	public Result delete(Staff staff) {
+		staffDao.delete(staff);
+		return new SuccessResult("Staff deleted");
+	}
+
+	@Override
+	public DataResult<Staff> getByEmail(String email) {
+		return new SuccessDataResult<Staff>(staffDao.getByUserEmail(email));
+	}
+
+
 
 }

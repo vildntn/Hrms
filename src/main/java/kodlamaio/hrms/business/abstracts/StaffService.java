@@ -11,4 +11,5 @@ public interface StaffService {
 	DataResult<List<Staff>> getAll();
 	Result add(Staff staff);
 	DataResult<Staff> getById(int staffId);
+	Result update(Staff staff);
 }

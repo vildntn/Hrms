@@ -9,7 +9,7 @@ import kodlamaio.hrms.entities.concreates.Photo;
 
 public interface PhotoDao extends JpaRepository<Photo, Integer> {
 
-	@Query("Select user.id From Photo")
-	int getById();
+	
+	Photo getByUserId(int id);
 	
 }

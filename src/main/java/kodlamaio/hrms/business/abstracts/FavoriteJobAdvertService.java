@@ -14,4 +14,5 @@ public interface FavoriteJobAdvertService {
 	DataResult<FavoriteJobAdvert> getById(int id);
 	DataResult<List<FavoriteJobAdvert>> getAll();
 	
+	
 }

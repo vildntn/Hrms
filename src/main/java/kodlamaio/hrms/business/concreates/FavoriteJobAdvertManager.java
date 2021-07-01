@@ -40,7 +40,6 @@ public class FavoriteJobAdvertManager implements FavoriteJobAdvertService {
 		return new SuccessResult("Job advert deleted");
 	}
 
-
 	@Override
 	public DataResult<FavoriteJobAdvert> getById(int id) {
 		return new SuccessDataResult<FavoriteJobAdvert>(favoriteJobAdvertDao.getOne(id));

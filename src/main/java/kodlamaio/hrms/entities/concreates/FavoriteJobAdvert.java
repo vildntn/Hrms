@@ -20,7 +20,8 @@ import lombok.NoArgsConstructor;
 @Table(name="favorite_job_advert")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobAdvertisement","jobSeeker"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobAdvertisement","jobSeeker"})
+//jsonignore girince null olarak kabul ediyor verileri!!!
 public class FavoriteJobAdvert {
 
 	@Id
@@ -31,6 +32,7 @@ public class FavoriteJobAdvert {
 	@ManyToOne
 	@JoinColumn(name="job_seeker_id")
 	private JobSeeker jobSeeker;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="job_advert_id")

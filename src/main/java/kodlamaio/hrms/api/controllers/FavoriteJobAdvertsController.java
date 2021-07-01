@@ -22,7 +22,6 @@ import kodlamaio.hrms.entities.concreates.FavoriteJobAdvert;
 @RequestMapping("/api/favoriteJobAdverts")
 public class FavoriteJobAdvertsController {
 
-
 	private FavoriteJobAdvertService favoriteJobAdvertService;
 
 	@Autowired

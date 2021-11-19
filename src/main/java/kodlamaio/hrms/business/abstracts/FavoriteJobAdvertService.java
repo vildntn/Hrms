@@ -13,6 +13,7 @@ public interface FavoriteJobAdvertService {
 	Result delete(FavoriteJobAdvert favoriteJobAdvert);
 	DataResult<FavoriteJobAdvert> getById(int id);
 	DataResult<List<FavoriteJobAdvert>> getAll();
-	
+	DataResult<List<FavoriteJobAdvert>> getByJobSeekerId(int id);
+	DataResult<List<FavoriteJobAdvert>> getByJobAdvertisementId(int id);
 	
 }

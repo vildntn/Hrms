@@ -50,4 +50,16 @@ public class FavoriteJobAdvertManager implements FavoriteJobAdvertService {
 	public DataResult<List<FavoriteJobAdvert>> getAll() {
 		return new SuccessDataResult<List<FavoriteJobAdvert>>(favoriteJobAdvertDao.findAll());
 	}
+
+
+	@Override
+	public DataResult<List<FavoriteJobAdvert>> getByJobSeekerId(int id) {
+		return new SuccessDataResult<List<FavoriteJobAdvert>>(favoriteJobAdvertDao.findByJobSeekerId(id));
+	}
+
+
+	@Override
+	public DataResult<List<FavoriteJobAdvert>> getByJobAdvertisementId(int id) {
+		return new SuccessDataResult<List<FavoriteJobAdvert>>(favoriteJobAdvertDao.findByJobAdvertisementId(id));
+	}
 }

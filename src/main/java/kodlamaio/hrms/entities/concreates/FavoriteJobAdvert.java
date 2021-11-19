@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class FavoriteJobAdvert {
 	@Column(name="id")
 	private int id;
 	
+
 	@ManyToOne
 	@JoinColumn(name="job_seeker_id")
 	private JobSeeker jobSeeker;

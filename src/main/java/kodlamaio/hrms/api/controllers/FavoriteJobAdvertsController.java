@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import kodlamaio.hrms.entities.concreates.FavoriteJobAdvert;
 
 @RestController
 @RequestMapping("/api/favoriteJobAdverts")
+@CrossOrigin
 public class FavoriteJobAdvertsController {
 
 	private FavoriteJobAdvertService favoriteJobAdvertService;
@@ -43,6 +45,16 @@ public class FavoriteJobAdvertsController {
 	@GetMapping("/getById")
 	public DataResult<FavoriteJobAdvert> getById(int id){
 		return favoriteJobAdvertService.getById(id);
+	}
+	
+	@GetMapping("/getByJobSeekerId")
+	public DataResult<List<FavoriteJobAdvert>> getByJobSeekerId(int id){
+		return favoriteJobAdvertService.getByJobSeekerId(id);
+	}
+	
+	@GetMapping("/getByJobAdvertisementId")
+	public DataResult<List<FavoriteJobAdvert>> getByJobAdvertisementId(int id){
+		return favoriteJobAdvertService.getByJobAdvertisementId(id);
 	}
 	
 	@PostMapping("/delete")

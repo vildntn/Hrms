@@ -9,6 +9,6 @@ import kodlamaio.hrms.entities.concreates.City;
 public interface CityService {
 
 	DataResult<List<City>> getAll();
-	
+	DataResult<City> getById(int id);
 	Result add(City city);
 }

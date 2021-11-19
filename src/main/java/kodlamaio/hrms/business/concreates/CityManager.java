@@ -31,4 +31,8 @@ public class CityManager implements CityService {
 		cityDao.save(city);
 		return new SuccessResult("New city Added!");
 	}
+	@Override
+	public DataResult<City> getById(int id) {
+		return new SuccessDataResult<City>(cityDao.getOne(id));
+	}
 }

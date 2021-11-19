@@ -33,9 +33,9 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public Result add(JobAdvertisement jobPosting) {
-		//jobAdvertisementDao.save(jobPosting);
-		return new SuccessResult("job posting added.");
+	public Result add(JobAdvertisement jobAdvert) {
+		jobAdvertisementDao.save(jobAdvert);
+		return new SuccessResult("Job advertisement added.");
 	}
 
 	@Override
@@ -66,14 +66,14 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public Result closeJobPosting(int id) {
+	public Result closeJobAdvert(int id) {
 		if(findById(id).getData().isStatus()==false) {
-			return new ErrorResult("There is no such job posting exists!");
+			return new ErrorResult("There is no such job advertisement exists!");
 		}
 		JobAdvertisement findByIdGetData=findById(id).getData();
 		findByIdGetData.setStatus(false);
 		this.jobAdvertisementDao.save(findByIdGetData);
-		return new SuccessResult("Job posting successfully closed.");
+		return new SuccessResult("Job advertisement successfully closed.");
 	}
 	
 
@@ -87,7 +87,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 		JobAdvertisement findByIdGetData=findById(id).getData();
 		if(findByIdGetData.isConfirmed()) {
-			return new SuccessResult("zaten onaylanmış");
+			return new SuccessResult("Already approved!");
 		}
 		findByIdGetData.setConfirmed(true);
 		this.jobAdvertisementDao.save(findByIdGetData);

@@ -11,7 +11,7 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 public interface JobAdvertisementService {
 
 	
-	Result add(JobAdvertisement jobPosting);
+	Result add(JobAdvertisement jobAdvert);
 	DataResult<List<JobAdvertisement>> getAll();
 	DataResult<List<JobAdvertisement>> getActiveJobAdvertisement();
 	DataResult<List<JobAdvertisement>> getAllActiveJobAdvertisementByEmployer(int id);
@@ -20,7 +20,7 @@ public interface JobAdvertisementService {
 	
 	DataResult<JobAdvertisement> findById(int id);
 	
-	Result closeJobPosting(int id);
+	Result closeJobAdvert(int id);
 	
 	Result isJobAdvertConfirmed(int id);
 

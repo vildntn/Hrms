@@ -23,5 +23,7 @@ public class JobAdvertisementDto {
 	private LocalDate applicationDeadline;
 	private String workType;
 	private String jobType;
+	private String department;
+	private String address;
 	
 }

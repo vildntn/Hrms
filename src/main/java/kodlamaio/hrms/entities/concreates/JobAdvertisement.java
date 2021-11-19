@@ -2,6 +2,7 @@ package kodlamaio.hrms.entities.concreates;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -24,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Table(name="job_advertisement")
 @AllArgsConstructor
 @NoArgsConstructor
-
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","favoriteJobAdverts"})
 public class JobAdvertisement {
 
 	@Id
@@ -77,8 +79,14 @@ public class JobAdvertisement {
 	@ManyToOne
 	@JoinColumn(name="job_type_id")
 	private JobType jobType;
+	
+	@ManyToOne
+	@JoinColumn(name="department_id")
+	private Department department;
 
 
+//    @OneToMany(mappedBy = "jobAdvertisement")
+//    private List<FavoriteJobAdvert> favoriteJobAdverts;
 
 	
 }

@@ -34,12 +34,12 @@ public class JobAdvertisementsController {
 	
 
 	@PostMapping("/add")
-	public Result add(@RequestBody JobAdvertisement jobPosting){
-		return jobAdvertisementService.add(jobPosting);
+	public Result add(@RequestBody JobAdvertisement jobAdvert){
+		return jobAdvertisementService.add(jobAdvert);
 	}
 	
-	@GetMapping("/getAllActiveJobPostingByEmployer")
-	public DataResult<List<JobAdvertisement>> getAllActiveJobPostingByEmployer( @RequestParam int id){
+	@GetMapping("/getAllActiveJobAdvertByEmployer")
+	public DataResult<List<JobAdvertisement>> getAllActiveJobAdvertisementByEmployer( @RequestParam int id){
 		return jobAdvertisementService.getAllActiveJobAdvertisementByEmployer(id);
 	}
 	
@@ -48,20 +48,20 @@ public class JobAdvertisementsController {
 		return jobAdvertisementService.getAll();
 	}
 	
-	@GetMapping("/getActiveJobPosting")
-	public DataResult<List<JobAdvertisement>> getActiveJobPosting(){
+	@GetMapping("/getActiveJobAdvert")
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisement(){
 		return jobAdvertisementService.getActiveJobAdvertisement();
 	}
 	
 	
-	@GetMapping("/getAllActiveJobPostingByDate")
-	public DataResult<List<JobAdvertisement>> getAllActiveJobPostingByDate(){
+	@GetMapping("/getAllActiveJobAdvertByDate")
+	public DataResult<List<JobAdvertisement>> getAllActiveJobAdvertisementByDate(){
 		return jobAdvertisementService.getAllActiveJobAdvertisementByDate();
 	}
 	
-	@PostMapping("/closeJobPosting")
+	@PostMapping("/closeJobAdvert")
 	public Result closeJobPosting(@RequestParam int id){
-		return this.jobAdvertisementService.closeJobPosting(id);
+		return this.jobAdvertisementService.closeJobAdvert(id);
 	}
 
 	@GetMapping("/getAllActiveJobAdvertisement")

@@ -23,8 +23,8 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 	List<JobAdvertisement> getAllActiveJobAdvertisementByDate(Sort sort);
 	
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementDto(j.id, jb.jobTitle, e.companyName, c.city,"+
-	"j.minSalary,j.maxSalary, j.openPosition,j.applicationDeadline, w.workType,jt.jobType)"
-			+"From JobAdvertisement j Inner Join j.city c Inner Join j.employer e Inner Join j.workType w Inner Join j.jobType jt "+
+	"j.minSalary,j.maxSalary, j.openPosition,j.applicationDeadline, w.workType,jt.jobType, d.department,e.address)"
+			+"From JobAdvertisement j Inner Join j.city c Inner Join j.employer e Inner Join j.workType w Inner Join j.jobType jt Inner Join j.department d "+
 			" Inner Join j.jobPosition jb where j.status=true")
 	List<JobAdvertisementDto> getAllActiveJobAdvertisement();
 	JobAdvertisement findById(int id);

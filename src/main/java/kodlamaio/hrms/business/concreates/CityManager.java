@@ -35,5 +35,4 @@ public class CityManager implements CityService {
 	public DataResult<City> getById(int id) {
 		return new SuccessDataResult<City>(cityDao.getOne(id));
 	}
-	
 }

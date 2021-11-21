@@ -6,6 +6,7 @@ package kodlamaio.hrms.entities.concreates;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,17 +44,13 @@ public class EmployerActivationByStaff {
 	@JoinColumn(name="staffs_id")
 	private Staff staff;
 	
-	@Column(name="is_confirmed")
-	private boolean is_confirmed;
 	
 	@Column(name="confirmed_date")
-	private LocalDate confirmed_date;
+	private LocalDateTime confirmedDate=LocalDateTime.now();
 	
 	@Column(name="status")
 	private boolean status;
 	
-	@Column(name="created_date")
-	private LocalDate createdDate;
-	
+
 	
 }

@@ -14,5 +14,6 @@ public interface EmployerService {
 	DataResult<Employer> getbyWebAddress(String webAddress);
 	Result update(Employer employer);
 	Result delete(Employer employer);
+	DataResult<Employer> getById(int id);
 
 }

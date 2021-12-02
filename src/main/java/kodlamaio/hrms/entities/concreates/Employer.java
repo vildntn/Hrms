@@ -44,7 +44,13 @@ public class Employer{
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+
+	@Column(name="address")
+	private String address;
 	
+	@ManyToOne
+	@JoinColumn(name="department_id")
+	private Department department;
 //	@OneToMany(mappedBy = "employer")
 //	private List<JobAdvertisement> jobAdvertisements;
 	

@@ -49,14 +49,22 @@ public class EmployerManager implements EmployerService{
 
 	@Override
 	public Result update(Employer employer) {
-		// TODO Auto-generated method stub
-		return null;
+		Employer updatedEmployer=employerDao.getOne(employer.getId());
+		updatedEmployer=employer;
+		employerDao.save(updatedEmployer);
+		
+		return new SuccessResult("employer updated");
 	}
 
 	@Override
 	public Result delete(Employer employer) {
-		// TODO Auto-generated method stub
-		return null;
+		employerDao.delete(employer);
+		return new SuccessResult(employer.getCompanyName()+"  Successfuly deleted");
+	}
+
+	@Override
+	public DataResult<Employer> getById(int id) {
+		return new SuccessDataResult<Employer>(employerDao.getOne(id));
 	}
 
 }
